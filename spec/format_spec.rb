@@ -28,4 +28,9 @@ describe "Format" do
   it "concatenates multiple arguments" do
     expect(Format.div.h1("Foo", "Bar")).to eq "<div><h1>FooBar</h1></div>"
   end
+
+  it "allows formatters to be captured for later use" do
+    wrap_in_div = Format.div
+    expect(wrap_in_div.("Foo")).to eq "<div>Foo</div>"
+  end
 end

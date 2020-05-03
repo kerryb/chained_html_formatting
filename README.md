@@ -34,9 +34,12 @@ Format.div.h1("Foo", "Bar")
 
 We should be able to store the created methods and reuse them.
 
+_Note very slight change in syntax from the original javascript kata, as Ruby
+doesn’t have bare functions._
+
 ```ruby
 wrap_in_div = Format.div
-wrap_in_div("Foo") #=> "<div>Foo</div>"
+wrap_in_div.("Foo") #=> "<div>Foo</div>"
 wrap_in_div.p("Bar") #=> "<div><p>Bar</p></div>"
 wrap_in_div_h1 = Format.div.h1
 wrap_in_div_h1("Far") #=> "<div><h1>Far</h1></div>"
