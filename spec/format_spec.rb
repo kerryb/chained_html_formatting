@@ -44,4 +44,11 @@ describe "Format" do
     wrap_in_div_h1 = Format.div.h1
     expect(wrap_in_div_h1.span("Bar")).to eq "<div><h1><span>Bar</span></h1></div>"
   end
+
+  it "allows formatters to be nested" do
+    expect(Format.div(
+      Format.h1("Title"),
+      Format.p("Paragraph with a #{Format.span("span")}.")
+    )).to eq "<div><h1>Title</h1><p>Paragraph with a <span>span</span>.</p></div>"
+  end
 end
