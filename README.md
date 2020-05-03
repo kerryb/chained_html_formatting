@@ -17,7 +17,7 @@ together.
 
 ```ruby
 Format.div.h1("FooBar")
-#=> "<div><h1>FooBar</h1><div>"
+#=> "<div><h1>FooBar</h1></div>"
 Format.div.p.span("FizBuz")
 #=> "<div><p><span>FizBuz</span></p></div>"
 ```

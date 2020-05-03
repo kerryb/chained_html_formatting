@@ -16,4 +16,12 @@ describe "Format" do
   it "can wrap text in a <h1> tag" do
     expect(Format.h1("foo")).to eq "<h1>foo</h1>"
   end
+
+  it "allows tags to be chained" do
+    expect(Format.div.h1("FooBar")).to eq "<div><h1>FooBar</h1></div>"
+  end
+
+  it "allows tags to be chained arbitrarily deep" do
+    expect(Format.div.p.span("FizBuz")).to eq "<div><p><span>FizBuz</span></p></div>"
+  end
 end
