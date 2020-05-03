@@ -10,18 +10,18 @@ class Format
   end
 
   def call(*args)
-    __generate(@tags, args)
+    __generate(args)
   end
 
   def method_missing(name, *args)
     if args.empty?
-      Format.new(@tags << name)
+      Format.new(@tags + [name])
     else
-      __generate(@tags << name, args)
+      Format.new(@tags + [name]).(*args)
     end
   end
 
-  private def __generate(tags, args)
-    tags.reverse.reduce(args.join) {|acc, tag| "<#{tag}>#{acc}</#{tag}>" }
+  private def __generate(args)
+    @tags.reverse.reduce(args.join) {|acc, tag| "<#{tag}>#{acc}</#{tag}>" }
   end
 end
