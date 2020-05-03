@@ -10,15 +10,11 @@ class Format
   end
 
   def call(*args)
-    __generate(args)
+    @tags.reverse.reduce(args.join) {|acc, tag| "<#{tag}>#{acc}</#{tag}>" }
   end
 
   def method_missing(name, *args)
     formatter = Format.new(@tags + [name])
     args.empty? ? formatter : formatter.(*args)
-  end
-
-  private def __generate(args)
-    @tags.reverse.reduce(args.join) {|acc, tag| "<#{tag}>#{acc}</#{tag}>" }
   end
 end
