@@ -31,6 +31,17 @@ describe "Format" do
 
   it "allows formatters to be captured for later use" do
     wrap_in_div = Format.div
+    # Note: Ruby doesn't have bare functions, so we have to call it using the .() syntax
     expect(wrap_in_div.("Foo")).to eq "<div>Foo</div>"
+  end
+
+  it "allows a chained formatter to be captured for later use" do
+    wrap_in_div_h1 = Format.div.h1
+    expect(wrap_in_div_h1.("Far")).to eq "<div><h1>Far</h1></div>"
+  end
+
+  it "allows more tags to be chained onto saved formatters" do
+    wrap_in_div_h1 = Format.div.h1
+    expect(wrap_in_div_h1.span("Bar")).to eq "<div><h1><span>Bar</span></h1></div>"
   end
 end
