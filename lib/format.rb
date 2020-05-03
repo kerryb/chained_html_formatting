@@ -14,11 +14,8 @@ class Format
   end
 
   def method_missing(name, *args)
-    if args.empty?
-      Format.new(@tags + [name])
-    else
-      Format.new(@tags + [name]).(*args)
-    end
+    formatter = Format.new(@tags + [name])
+    args.empty? ? formatter : formatter.(*args)
   end
 
   private def __generate(args)
