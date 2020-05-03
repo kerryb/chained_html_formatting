@@ -24,4 +24,8 @@ describe "Format" do
   it "allows tags to be chained arbitrarily deep" do
     expect(Format.div.p.span("FizBuz")).to eq "<div><p><span>FizBuz</span></p></div>"
   end
+
+  it "concatenates multiple arguments" do
+    expect(Format.div.h1("Foo", "Bar")).to eq "<div><h1>FooBar</h1></div>"
+  end
 end
